@@ -1,0 +1,473 @@
+:root {
+  --primary-color: #072E33;
+  --secondary-color: #0f9d58;
+  --danger-color: #ff4444;
+  --dark-bg: #1a1a1a;
+  --light-text: #ffffff;
+  --dark-text: #333333;
+  --menu-bg: rgba(7, 46, 51, 0.95);
+  --menu-border: #0f969c;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f5f5f5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 0;
+  margin: 0;
+}
+
+body.dark-mode {
+  background-color: var(--dark-bg);
+  color: var(--light-text);
+}
+
+/* -------------------------------------------------- */
+/* MENÚ SUPERIOR MEJORADO */
+/* -------------------------------------------------- */
+.top-menu {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  gap: 12px;
+  background: var(--menu-bg);
+  padding: 12px 20px;
+  width: 100%;
+  max-width: 900px;
+  border-radius: 0 0 12px 12px;
+  border: 1px solid var(--menu-border);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+  backdrop-filter: blur(5px);
+}
+
+.menu-section {
+  position: relative;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  min-width: 130px;
+}
+
+.menu-section:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.menu-title {
+  color: white;
+  font-weight: bold;
+  padding: 8px 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  user-select: none;
+  font-size: 0.95rem;
+}
+
+.menu-title::after {
+  content: "▼";
+  font-size: 0.6em;
+  margin-left: 5px;
+  transition: transform 0.3s;
+}
+
+.menu-section:hover .menu-title::after {
+  transform: rotate(180deg);
+}
+
+.menu-options {
+  display: none;
+  position: absolute;
+  background: var(--menu-bg);
+  border-radius: 8px;
+  padding: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+  z-index: 100;
+  top: 100%;
+  left: 0;
+  min-width: 100%;
+  border: 1px solid var(--menu-border);
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Grids para botones */
+.grid-notes {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  width: 220px;
+}
+
+.grid-accidentals {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+  width: 160px;
+}
+
+.grid-barlines {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+  width: 180px;
+}
+
+.tools-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  width: 220px;
+}
+
+/* -------------------------------------------------- */
+/* BOTONES MEJORADOS */
+/* -------------------------------------------------- */
+button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: left;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+}
+
+button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+button.active {
+  background: var(--secondary-color) !important;
+  color: white !important;
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(15, 157, 88, 0.5);
+}
+
+.note-btn, .accidental-btn, .barline-btn {
+  white-space: nowrap;
+}
+
+.tool-btn {
+  justify-content: center;
+  font-size: 0.9em;
+}
+
+/* Botón de borrado */
+#delete-btn.active {
+  background: var(--danger-color) !important;
+  animation: pulse-danger 0.8s infinite;
+}
+
+@keyframes pulse-danger {
+  0% { background-color: var(--danger-color); }
+  50% { background-color: #ff0000; }
+  100% { background-color: var(--danger-color); }
+}
+
+/* -------------------------------------------------- */
+/* HOJA DE TRABAJO */
+/* -------------------------------------------------- */
+.sheet-container {
+  width: 100%;
+  max-width: 900px;
+  background-color: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.15);
+  padding: 30px;
+  border-radius: 10px;
+  margin-top: 20px;
+  transition: all 0.3s ease;
+}
+
+body.dark-mode .sheet-container {
+  background-color: #222;
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+}
+
+.header-info {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.song-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  margin-bottom: 5px;
+}
+
+body.dark-mode .song-title {
+  color: #4db8ff;
+}
+
+.song-author {
+  font-style: italic;
+  color: var(--dark-text);
+  margin-bottom: 20px;
+}
+
+body.dark-mode .song-author {
+  color: #ccc;
+}
+
+/* -------------------------------------------------- */
+/* ELEMENTOS MUSICALES */
+/* -------------------------------------------------- */
+.lines-container {
+  width: 100%;
+  min-height: 300px;
+}
+
+.measure-line {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  min-height: 90px;
+  padding: 15px 0;
+  border-bottom: 1px dashed #ddd;
+  position: relative;
+}
+
+body.dark-mode .measure-line {
+  border-color: #444;
+}
+
+.measure-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 0 10px;
+  max-width: 100%;
+}
+
+/* Líneas de compás */
+.barline {
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  font-weight: bold;
+  font-family: 'Arial', sans-serif;
+  color: var(--primary-color);
+  padding: 0 8px;
+}
+
+body.dark-mode .barline {
+  color: #4db8ff;
+}
+
+/* Tipos de líneas de compás */
+.barline-single::after { content: "|"; }
+.barline-double::after { content: "‖"; }
+.barline-start-repeat::after { content: ":‖"; }
+.barline-end-repeat::after { content: "‖:"; }
+
+/* Notas musicales */
+.musical-note {
+  font-size: 3.5rem;
+  font-family: 'Arial', sans-serif;
+  font-weight: bold;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  margin: 0 3px;
+  background: rgba(15, 157, 88, 0.1);
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+body.dark-mode .musical-note {
+  background: rgba(15, 157, 88, 0.3);
+}
+
+/* -------------------------------------------------- */
+/* ELEMENTOS SELECCIONADOS */
+/* -------------------------------------------------- */
+.selected-element {
+  position: relative;
+}
+
+.selected-element::after {
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  border: 2px dashed var(--secondary-color);
+  border-radius: 8px;
+  pointer-events: none;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { opacity: 0.6; }
+}
+
+.barline.selected {
+  outline: 2px solid var(--secondary-color);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* -------------------------------------------------- */
+/* MODO BORRADO */
+/* -------------------------------------------------- */
+.delete-mode {
+  cursor: not-allowed !important;
+}
+
+.delete-mode .barline:hover,
+.delete-mode .musical-note:hover {
+  outline: 2px dashed var(--danger-color);
+  border-radius: 4px;
+  cursor: cell !important;
+}
+
+/* -------------------------------------------------- */
+/* DISEÑO RESPONSIVE */
+/* -------------------------------------------------- */
+@media (max-width: 768px) {
+  .top-menu {
+    padding: 8px 10px;
+    gap: 8px;
+    border-radius: 0;
+  }
+  
+  .menu-section {
+    min-width: 110px;
+  }
+  
+  .menu-title {
+    padding: 6px 10px;
+    font-size: 0.85rem;
+  }
+  
+  .menu-options {
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90vw;
+    max-width: 280px;
+  }
+  
+  .grid-notes {
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+  }
+  
+  .tools-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .musical-note {
+    font-size: 2.8rem;
+    height: 70px;
+    padding: 0 8px;
+  }
+  
+  .barline {
+    font-size: 2.5rem;
+    height: 80px;
+  }
+  
+  .sheet-container {
+    padding: 20px 15px;
+    width: 100%;
+    border-radius: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .top-menu {
+    justify-content: space-between;
+  }
+  
+  .menu-section {
+    min-width: calc(50% - 10px);
+  }
+  
+  .menu-title {
+    justify-content: center;
+  }
+}/* ================================================== */
+/* SUBTÍTULOS EDITABLES POR LÍNEA */
+/* ================================================== */
+
+.measure-header {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.line-subtitle {
+  font-family: 'Arial', sans-serif;
+  font-size: 1rem;
+  color: #555;
+  text-align: center;
+  padding: 4px 15px;
+  border-radius: 15px;
+  background-color: rgba(7, 46, 51, 0.1);
+  border: 1px dashed rgba(7, 46, 51, 0.3);
+  cursor: text;
+  max-width: 80%;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.line-subtitle:focus {
+  background-color: rgba(7, 46, 51, 0.15);
+  border: 1px solid rgba(7, 46, 51, 0.5);
+  box-shadow: 0 0 0 2px rgba(7, 46, 51, 0.2);
+}
+
+body.dark-mode .line-subtitle {
+  color: #ccc;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px dashed rgba(255, 255, 255, 0.3);
+}
+
+body.dark-mode .line-subtitle:focus {
+  background-color: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+/* Ajuste para el contenedor de líneas */
+.lines-container {
+  width: 100%;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}

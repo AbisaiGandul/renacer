@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Canciones - R.E.N.A.C.E.R</title>
+  <link rel="stylesheet" href="styles/style_canciones.css" />
+  <link rel="stylesheet" href="styles/style_login.css"/>
+  <link rel="icon" href="icon/icon.png" />
+</head>
+<body>
+  <header class="header">
+    <nav class="navbar">
+      <div class="navbar__logo">
+        <img src="img/logo.png" alt="Logo de R.E.N.A.C.E.R" class="logo-img" />
+        <h1 class="logo-text">R.E.N.A.C.E.R</h1>
+      </div>
+      <ul class="navbar__menu">
+        <li class="navbar__item"><a href="index.html" class="navbar__link">Inicio</a></li>
+        <li class="navbar__item"><a href="canciones.html" class="navbar__link active">Canciones</a></li>
+        <li class="navbar__item"><a href="#" class="navbar__link login-btn">Inicia Sesión</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="main-content">
+    <section class="search-section">
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Buscar canción..."
+        autocomplete="off"
+      />
+    </section>
+
+    <section id="songsList" class="songs-list">
+      <p class="no-songs-msg">No hay canciones</p>
+    </section>
+    
+    <!-- Modal de Inicio de Sesión y Registro -->
+    <div class="login-modal" id="loginModal">
+      <div class="login-content">
+        <span class="close-btn" id="closeModal">&times;</span>
+
+        <!-- Formulario de inicio de sesión -->
+        <form id="loginForm">
+          <h2>Iniciar Sesión</h2>
+          <label for="emailLogin">Correo Electrónico</label>
+          <input 
+            type="email" 
+            id="emailLogin" 
+            placeholder="tuemail@ejemplo.com" 
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+            required
+          >
+          <div class="error-message" id="loginEmailError"></div>
+
+          <label for="passwordLogin">Contraseña</label>
+          <input 
+            type="password" 
+            id="passwordLogin" 
+            placeholder="••••••••" 
+            minlength="6"
+            required
+          >
+          <div class="error-message" id="loginPassError"></div>
+
+          <button type="submit">Entrar</button>
+
+          <p class="toggle-form">¿No tenés cuenta? <a href="#" id="showRegister">Crear una cuenta</a></p>
+        </form>
+
+        <!-- Formulario de registro -->
+        <form id="registerForm" style="display: none;">
+          <h2>Crear Cuenta</h2>
+          <label for="nameRegister">Nombre Completo</label>
+          <input 
+            type="text" 
+            id="nameRegister" 
+            placeholder="Tu nombre" 
+            minlength="3"
+            required
+          >
+          <div class="error-message" id="nameError"></div>
+
+          <label for="emailRegister">Correo Electrónico</label>
+          <input 
+            type="email" 
+            id="emailRegister" 
+            placeholder="correo@ejemplo.com" 
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+            required
+          >
+          <div class="error-message" id="emailError"></div>
+
+          <label for="passwordRegister">Contraseña</label>
+          <input 
+            type="password" 
+            id="passwordRegister" 
+            placeholder="••••••••" 
+            minlength="6"
+            required
+          >
+          <div class="error-message" id="passError"></div>
+
+          <button type="submit">Registrarme</button>
+
+          <p class="toggle-form">¿Ya tenés cuenta? <a href="#" id="showLogin">Iniciar sesión</a></p>
+        </form>
+      </div>
+    </div>
+  </main>
+  <!-- Botón flotante para añadir canciones -->
+  <button class="add-song-btn" id="addSongBtn">+</button>
+  <!-- Modal para nueva canción -->
+<div class="song-modal" id="songModal">
+  <div class="song-form-container">
+    <span class="close-song-modal" id="closeSongModal">&times;</span>
+    <h2>Crear Nueva Plantilla</h2>
+    
+    <form id="songForm">
+      <div class="form-group">
+        <label for="songTitle">Título</label>
+        <input type="text" id="songTitle" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="songAuthor">Autor</label>
+        <input type="text" id="songAuthor">
+      </div>
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label for="songTimeSignature">Compás</label>
+          <select id="songTimeSignature" required>
+            <option value="2/4">2/4</option>
+            <option value="3/4">3/4</option>
+            <option value="4/4" selected>4/4</option>
+            <option value="6/8">6/8</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label for="songKey">Tonalidad</label>
+          <select id="songKey" required>
+            <option value="C">C</option>
+            <option value="D">D</option>
+            <option value="E">E</option>
+            <option value="F">F</option>
+            <option value="G">G</option>
+            <option value="A">A</option>
+            <option value="B">B</option>
+          </select>
+        </div>
+      </div>
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label for="songTonality">Tipo</label>
+          <select id="songTonality" required>
+            <option value="major">Mayor</option>
+            <option value="minor">Menor</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label for="songAccidental">Alteración</label>
+          <select id="songAccidental">
+            <option value="natural">Natural</option>
+            <option value="sharp"># (Sostenido)</option>
+            <option value="flat">b (Bemol)</option>
+          </select>
+        </div>
+      </div>
+      
+      <button type="submit" class="create-template-btn">Crear Plantilla</button>
+    </form>
+  </div>
+</div>
+  <script src="js/login_modal.js"></script>
+  <script src="js/flt_button_c.js"></script>
+  <script src="js/canciones.js"></script>
+</body>
+</html>

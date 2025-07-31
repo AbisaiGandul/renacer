@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>R.E.N.A.C.E.R</title>
+  <link rel="icon" href="icon/icon.png"/>
+  <link rel="stylesheet" href="styles/style.css"/>
+  <link rel="stylesheet" href="styles/style_login.css"/>
+</head>
+<body>
+  <header class="header">
+    <nav class="navbar">
+      <div class="navbar__logo">
+        <img src="img/logo.png" alt="Logo de R.E.N.A.C.E.R" class="logo-img"/>
+        <h2 class="logo-text">R.E.N.A.C.E.R</h2>
+      </div>
+      <ul class="navbar__menu">
+        <li class="navbar__item"><a href="index.html" class="navbar__link">Inicio</a></li>
+        <li class="navbar__item"><a href="canciones.html" class="navbar__link">Canciones</a></li>
+        <li class="navbar__item"><a href="#" class="navbar__link login-btn">Inicia Sesión</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="bienvenida-container">
+      <h1>Bienvenido a R.E.N.A.C.E.R</h1>
+      <p>Descubrí nuestras canciones, letras y acordes.<br>¡Sumate y compartí la música!</p>
+      <a href="canciones.html" class="btn">Ver Canciones</a>
+    </section>
+  </main>
+
+  <!-- Modal de Inicio de Sesión y Registro -->
+  <div class="login-modal" id="loginModal">
+    <div class="login-content">
+      <span class="close-btn" id="closeModal">&times;</span>
+
+      <!-- Formulario de inicio de sesión -->
+      <form id="loginForm">
+        <h2>Iniciar Sesión</h2>
+        <label for="emailLogin">Correo Electrónico</label>
+        <input 
+          type="email" 
+          id="emailLogin" 
+          placeholder="tuemail@ejemplo.com" 
+          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+          required
+        >
+        <div class="error-message" id="loginEmailError"></div>
+
+        <label for="passwordLogin">Contraseña</label>
+        <input 
+          type="password" 
+          id="passwordLogin" 
+          placeholder="••••••••" 
+          minlength="6"
+          required
+        >
+        <div class="error-message" id="loginPassError"></div>
+
+        <button type="submit">Entrar</button>
+
+        <p class="toggle-form">¿No tenés cuenta? <a href="#" id="showRegister">Crear una cuenta</a></p>
+      </form>
+
+      <!-- Formulario de registro -->
+      <form id="registerForm" style="display: none;">
+        <h2>Crear Cuenta</h2>
+        <label for="nameRegister">Nombre Completo</label>
+        <input 
+          type="text" 
+          id="nameRegister" 
+          placeholder="Tu nombre" 
+          minlength="3"
+          required
+        >
+        <div class="error-message" id="nameError"></div>
+
+        <label for="emailRegister">Correo Electrónico</label>
+        <input 
+          type="email" 
+          id="emailRegister" 
+          placeholder="correo@ejemplo.com" 
+          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+          required
+        >
+        <div class="error-message" id="emailError"></div>
+
+        <label for="passwordRegister">Contraseña</label>
+        <input 
+          type="password" 
+          id="passwordRegister" 
+          placeholder="••••••••" 
+          minlength="6"
+          required
+        >
+        <div class="error-message" id="passError"></div>
+
+        <button type="submit">Registrarme</button>
+
+        <p class="toggle-form">¿Ya tenés cuenta? <a href="#" id="showLogin">Iniciar sesión</a></p>
+      </form>
+    </div>
+  </div>
+  <script src="js/login_modal.js"></script>
+</body>
+</html>

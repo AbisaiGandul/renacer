@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editor Musical - R.E.N.A.C.E.R</title>
+  <link rel="stylesheet" href="styles/style_mesa_trabajo.css">
+  <link rel="icon" href="icon/icon.png">
+</head>
+<body>
+  <!-- Menú Superior -->
+  <div class="top-menu">
+    <!-- Sección Notas -->
+    <div class="menu-section">
+      <span class="menu-title">Notas</span>
+      <div class="menu-options grid-notes">
+        <button class="note-btn" data-note="A">A</button>
+        <button class="note-btn" data-note="B">B</button>
+        <button class="note-btn" data-note="C">C</button>
+        <button class="note-btn" data-note="D">D</button>
+        <button class="note-btn" data-note="E">E</button>
+        <button class="note-btn" data-note="F">F</button>
+        <button class="note-btn" data-note="G">G</button>
+      </div>
+    </div>
+
+    <!-- Sección Modificadores -->
+<!-- Sección Modificadores -->
+<div class="menu-section">
+  <span class="menu-title">Alteraciones</span>
+  <div class="menu-options grid-accidentals">
+    <button class="accidental-btn" data-accidental="#"># Sostenido</button>
+    <button class="accidental-btn" data-accidental="b">b Bemol</button>
+    <button class="accidental-btn" data-accidental="m">m Menor</button>
+  </div>
+</div>
+
+    <!-- Sección Compás -->
+    <div class="menu-section">
+      <span class="menu-title">Compás</span>
+      <div class="menu-options grid-barlines">
+        <button class="barline-btn" data-type="single">| Línea Simple</button>
+        <button class="barline-btn" data-type="double">|| Línea Doble</button>
+        <button class="barline-btn" data-type="start-repeat">:|| Inicio Repetición</button>
+        <button class="barline-btn" data-type="end-repeat">||: Fin Repetición</button>
+      </div>
+    </div>
+
+    <!-- Sección Acciones -->
+<!-- Dentro de <div class="top-menu">, añade esta nueva sección -->
+<div class="menu-section tools-section">
+  <span class="menu-title">Herramientas</span>
+  <div class="menu-options tools-grid">
+    <button id="new-line-btn" class="tool-btn">➕<span>Nueva Línea</span></button>
+    <button id="save-btn" class="tool-btn">💾<span>Guardar</span></button>
+    <button id="finish-btn" class="tool-btn">🏁<span>Terminar</span></button>
+    <button id="back-btn" class="tool-btn">←<span>Atrás</span></button>
+    <button id="delete-btn" class="tool-btn">🗑️<span>Borrar</span></button>
+    <button id="dark-mode-btn" class="tool-btn">🌙<span>Modo Oscuro</span></button>
+  </div>
+</div>
+
+  <!-- Área de Trabajo -->
+  <div class="sheet-container">
+    <div class="header-info">
+      <div class="song-title" id="sheetTitle">Nueva Canción</div>
+      <div class="song-author" id="sheetAuthor">Anónimo</div>
+    </div>
+    
+    <div class="lines-container" id="linesContainer">
+      <!-- Líneas generadas dinámicamente -->
+    </div>
+  </div>
+
+  <script src="js/mesa_trabajo.js"></script>
+</body>
+</html>
