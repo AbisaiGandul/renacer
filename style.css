@@ -145,7 +145,7 @@ body::after {
   }
 
   .navbar__menu {
-    flex-direction: row;
+    flex-direction: colum;
     width: 100%;
     gap: 10px;
   }
