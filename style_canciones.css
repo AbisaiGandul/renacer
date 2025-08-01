@@ -502,7 +502,8 @@ body {
 .delete-btn svg {
   width: 24px;
   height: 24px;
-}@media (max-width: 768px) {
+}
+@media (max-width: 768px) {
   /* Ajustes navbar */
   .navbar {
     flex-direction: column;
@@ -516,7 +517,7 @@ body {
   }
 
   .navbar__menu {
-    flex-direction: column;
+    flex-direction: row;
     gap: 12px;
     width: 100%;
   }
