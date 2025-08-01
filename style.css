@@ -18,7 +18,7 @@ body::before {
   content: "";
   position: fixed;
   inset: 0; /* top:0; left:0; right:0; bottom:0; */
-  background: url('img/logo.png') no-repeat center center fixed;
+  background: url('logo.png') no-repeat center center fixed;
   background-size: auto;
   opacity: 0.5; /* aquí bajás la opacidad SOLO de la imagen */
   z-index: -2;
@@ -131,4 +131,34 @@ body::after {
 
 .btn:hover {
   background-color: #0f969c;
+}
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    height: auto;
+    padding: 10px 20px;
+  }
+
+  .navbar__logo {
+    margin-bottom: 10px;
+  }
+
+  .navbar__menu {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .navbar__link {
+    width: 100%;
+    padding: 10px;
+    text-align: left;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+  }
+
+  .navbar__link:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+  }
 }
