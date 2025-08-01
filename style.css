@@ -134,7 +134,7 @@ body::after {
 }
 @media (max-width: 768px) {
   .navbar {
-    flex-direction: row;
+    flex-direction: colum;
     align-items: flex-start;
     height: auto;
     padding: 10px 20px;
@@ -145,7 +145,7 @@ body::after {
   }
 
   .navbar__menu {
-    flex-direction: column;
+    flex-direction: row;
     width: 100%;
     gap: 10px;
   }
