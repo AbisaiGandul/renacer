@@ -133,32 +133,53 @@ body::after {
   background-color: #0f969c;
 }
 @media (max-width: 768px) {
+  /* Header y Navbar */
+  .header {
+    height: auto; /* Cambia a altura automática */
+    position: relative; /* Considera cambiar a relative si no necesitas fixed */
+  }
+  
   .navbar {
-    flex-direction: colum;
-    align-items: flex-start;
-    height: auto;
-    padding: 10px 20px;
+    flex-direction: row; /* Mantén en fila pero ajusta el padding */
+    padding: 10px 15px;
+    height: 60px; /* Altura fija para el estado colapsado */
+    overflow: hidden; /* Oculta el menú inicialmente */
+    transition: height 0.3s ease; /* Animación para expandir/contraer */
   }
-
-  .navbar__logo {
-    margin-bottom: 10px;
+  
+  /* Cuando el menú está activo */
+  .navbar.active {
+    height: auto; /* Altura automática cuando se expande */
+    overflow: visible;
   }
-
+  
   .navbar__menu {
-    flex-direction: colum;
+    flex-direction: column;
     width: 100%;
-    gap: 10px;
+    display: none; /* Oculta inicialmente */
   }
-
-  .navbar__link {
-    width: 100%;
-    padding: 10px;
-    text-align: left;
-    background-color: rgba(255, 255, 255, 0.05);
-    border-radius: 4px;
+  
+  .navbar.active .navbar__menu {
+    display: flex; /* Muestra cuando está activo */
+    margin-top: 15px;
   }
-
-  .navbar__link:hover {
-    background-color: rgba(255, 255, 255, 0.15);
+  
+  /* Botón de menú hamburguesa */
+  .menu-toggle {
+    display: block;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+  
+  /* Ajuste del contenido principal */
+  .main-content {
+    margin-top: 60px; /* Solo la altura del header colapsado */
+  }
+  
+  .navbar.active ~ .main-content {
+    margin-top: [altura-total-del-header-expandido]px; /* Ajusta según necesites */
   }
 }
