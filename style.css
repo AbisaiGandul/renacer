@@ -142,7 +142,6 @@ body::after {
   .navbar {
     flex-direction: row; /* Mantén en fila pero ajusta el padding */
     padding: 10px 15px;
-    height: 60px; /* Altura fija para el estado colapsado */
     overflow: hidden; /* Oculta el menú inicialmente */
     transition: height 0.3s ease; /* Animación para expandir/contraer */
   }
