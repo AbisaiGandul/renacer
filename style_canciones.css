@@ -502,4 +502,70 @@ body {
 .delete-btn svg {
   width: 24px;
   height: 24px;
+}@media (max-width: 768px) {
+  /* Ajustes navbar */
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 20px;
+    height: auto;
+  }
+
+  .navbar__logo {
+    margin-bottom: 10px;
+  }
+
+  .navbar__menu {
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .navbar__link {
+    width: 100%;
+    padding: 10px;
+    text-align: left;
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+
+  /* Asegura que el contenido principal no quede oculto */
+  .main-content {
+    margin-top: 80px;
+    padding: 10px;
+  }
+
+  /* Input de búsqueda */
+  #searchInput {
+    font-size: 1rem;
+    padding: 10px 16px;
+  }
+
+  /* Lista de canciones y tarjetas */
+  .songs-list {
+    padding: 10px;
+  }
+
+  .song-card {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .song-meta {
+    flex-wrap: wrap;
+  }
+
+  .add-song-btn {
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+  }
+
+  /* Modal responsivo */
+  .song-form-container {
+    width: 95%;
+    padding: 20px;
+  }
 }
